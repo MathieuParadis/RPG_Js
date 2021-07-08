@@ -21,14 +21,14 @@ class Fighter extends Character {
     if (this.speactivated == true) {
       damage -= 2;
       this.hp -= damage;
-      alert(`${this.name} uses ${this.spe} to attenuate the damages. \n${this.name} only receives ${damage} damage points. \n${this.name} got ${this.hp} hp left.`);
+      alert(`${this.name} uses ${this.spe} to attenuate the damages. \n${this.name} only receives ${damage} damage points. \n${this.name} gots ${this.hp} hp left.`);
     } else {
       this.hp -= damage;
-      alert(`${this.name} receives ${damage} damage points. \n${this.name} got ${this.hp} hp left.`);
+      alert(`${this.name} receives ${damage} damage points. \n${this.name} gots ${this.hp} hp left.`);
     }
   }
 
-  resetSpeactivatedToFalse() {
+  resetSpe() {
     this.speactivated = false;
   }
 }

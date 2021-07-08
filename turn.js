@@ -8,7 +8,7 @@ class Turn extends Game {
     alert(`It's turn ${this.turnNumber}`);
     this.setHasplayedToFalse(this.playersAlive());
     this.deactivateFigthersSpe(this.playersAlive());
-    this.performAssassination(this.playersAlive())
+    this.performAssassination(this.playersAlive());
   }
 
   pickPlayerRandomly(players) {
@@ -84,9 +84,10 @@ class Turn extends Game {
   }
 
   turnPlay() {
-    while (this.playersAliveAndHaventPlayed().length > 0) {
+    while (this.playersAliveAndHaventPlayed().length > 0 && this.playersAlive().length > 1) {
       this.playerActionsMenu(this.pickPlayerRandomly(this.playersAliveAndHaventPlayed()));
     }
+    this.deactivateAssassinsSpe(this.playersAlive());
   }
 
   watchStatsOtherPlayers(player) {
@@ -102,15 +103,11 @@ class Turn extends Game {
   }
 
   deactivateFigthersSpe(players) {
-    players.filter(player => player.constructor.name == 'Fighter').map(player => player.resetSpeactivatedToFalse());
+    players.filter(player => player.constructor.name == 'Fighter').map(player => player.resetSpe());
   }
 
-  // activateAssassinSpe(players) {
-  //   players.filter(player => player.constructor.name == 'Assassin').map(player => player.speactivated += 1);
-  // }
-
   deactivateAssassinsSpe(players) {
-    players.filter(player => player.constructor.name == 'Assassin').map(player => player.resetSpeactivatedToFalse());
+    players.filter(player => player.constructor.name == 'Assassin').map(player => player.resetSpe());
   }
 
   performAssassination(players) {

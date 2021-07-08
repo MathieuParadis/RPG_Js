@@ -9,7 +9,7 @@ class Game {
   }
 
   playersAlive() {
-    return this.players.filter(player => player.status == 'playing' || player.status == 'winner');
+    return this.players.filter(player => player.isCharacterKilled() == false);
   }
 
   displayWinners() {

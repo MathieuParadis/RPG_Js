@@ -10,7 +10,7 @@ class Character {
 
   takeDamage(damage) {
     this.hp -= damage;
-    alert(`${this.name} receives ${damage} damage points. \n${this.name} got ${this.hp} hp left.`);
+    alert(`${this.name} receives ${damage} damage points. \n${this.name} gots ${this.hp} hp left.`);
   }
 
   dealDamage(victim) {

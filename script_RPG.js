@@ -6,11 +6,13 @@ const Carl = new Assassin('Carl');
 const Gandalf = new Wizard('Gandalf');
 const Geralt = new Hunter('Geralt');
 let players = [Grace, Ulder, Moana, Draven, Carl, Gandalf, Geralt];
-let p = [Carl, Moana]
+let p = [Carl, Ulder, Gandalf, Geralt]
 
 const GAME = new Game(p);
 
-alert("Welcome to THE JUNGLE");
+alert("Welcome to THP Battle Royal!");
+alert("Press enter to launch a party.");
+alert("Great, lets, go!");
 
 
 while (GAME.turnLeft > 0 && !GAME.DidSomeoneWin()) {

@@ -29,6 +29,7 @@ class Assassin extends Character {
       alert('Assassination failed');
       this.successful = -1;
       this.takeDamage(7);
+      this.changeStatusToLoser();
     }
     this.target = 0;
   }
@@ -36,12 +37,15 @@ class Assassin extends Character {
   takeDamage(damage) {
     if (this.successful == 1) {
       damage = 0;
-      alert(`${this.name} uses the special effect of ${this.spe} to cancel the attack. \n${this.name} got ${this.hp} hp left.`);
+      alert(`${this.name} uses the special effect of ${this.spe} to cancel the attack. \n${this.name} gots ${this.hp} hp left.`);
     } else {
       this.hp -= damage;
       alert(`${this.name} receives ${damage} damage points. \n${this.name} got ${this.hp} hp left.`);
     }
   }
 
+  resetSpe() {
+    this.successful = 0;
+  }
 
 }
