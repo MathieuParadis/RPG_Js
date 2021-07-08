@@ -32,7 +32,7 @@ class Game {
     } 
   }
 
-  watchStats() {
-    this.playersAlive().map(player => alert(`Class: ${player.constructor.name} \nName: ${player.name} \nHP: ${player.hp} \nDamage: ${player.dmg} \nMana: ${player.mana}`));
+  watchStats(players) {
+    players.map(player => alert(`Name: ${player.name} \nClass: ${player.constructor.name} \nHP: ${player.hp} \nDamage: ${player.dmg} \nMana: ${player.mana}`));
   }
 }

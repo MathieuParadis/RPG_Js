@@ -8,43 +8,45 @@ class Character {
     this.hasplayed = hasplayed;
   }
 
-  takeDamage (damage) {
+  takeDamage(damage) {
     this.hp -= damage;
-    alert(`${this.name} receives ${damage} damage points`)
+    alert(`${this.name} receives ${damage} damage points. \n${this.name} got ${this.hp} hp left.`);
   }
 
-
-  dealDamage (victim) {
-    alert(`${this.name} inflicts ${this.dmg} damage points to ${victim.name}`)
+  dealDamage(victim) {
+    alert(`${this.name} inflicts ${this.dmg} damage points to ${victim.name}.`);
     victim.takeDamage(this.dmg);
 
     if (this.didItKill(victim) == true) {
       this.mana += 20;
       victim.changeStatusToLoser();
+      alert(`${this.name} gains 20 mana points from killing ${victim.name}.`);
     }
   }
 
+  specialMove() {}
 
-  isCharacterKilled () {
+  seeSpecialMove() {}
+
+  isCharacterKilled() {
     return this.hp <= 0 ? true : false;
   }
 
-
-  changeStatusToLoser () {
+  changeStatusToLoser() {
     if (this.isCharacterKilled() == true) {
       this.status = 'loser';
-      alert(`${this.name} has been killed`)
+      alert(`${this.name} has been killed`);
     }
   }
 
-  changeStatusToWinner () {
+  changeStatusToWinner() {
     if (this.isCharacterKilled() == false) {
       this.status = 'winner';
     }
   }
 
-
-  didItKill (victim) {
+  didItKill(victim) {
     return victim.isCharacterKilled() == true ? true : false;
   }
+
 }
