@@ -6,6 +6,7 @@ class Turn extends Game {
 
   startTurn() {
     alert(`It's turn ${this.turnNumber}`);
+    this.playersAlive().map(player => player.hasplayed = false);
   }
 
   pickPlayerRandomly(players) {
@@ -34,54 +35,44 @@ class Turn extends Game {
   }
 
   chooseTarget(player) {
-    let targets = this.playersAlive();
-    let question = `Who would you like to attack ?`
+    //Removing oneself fron the targets 
+    let targets = this.playersAlive().filter(target => target != player);
 
+    //Array of indexes of target, later used to match the user response with targets array
+    let indexes = Array.from(Array(targets.length).keys());
+
+    //Code to get the whole question in one prompt only
+    let question = `${player.name}, Who would you like to attack ?`;
     for (let i in targets) {
       question += `\nPress [${i}] to attack ${targets[i].name}`;
     }
-
     let playerResponse = prompt(question);
-    
-    
-      switch (playerResponse) {
-      
-        case `0`:
-          alert("Frstdhyjfugih");
-        break;
 
-        case 1:
-          alert("Frstdhyjfugih");
-        break;
-  
-        default:
-          alert('Sorry, I did not understand. Please try again!');
-          this.chooseTarget(player);
-        }
-  
 
-    
+    if (indexes.includes(parseInt(playerResponse))) {
+      player.dealDamage(targets[parseInt(playerResponse)]);
+    } else {
+      alert('Sorry, I did not understand. Please try again!');
+      this.chooseTarget(player);
+    }
+
+    player.hasplayed = true;
   }
 
-  // puts "a - chercher une meilleur arme"
-  // puts "s - chercher à se soigner"
-  // print "\n"
 
-  // puts "attaquer un joueur en vue :"
-  //   for i in 0..@enemies_in_sight.length-1
-  //     print "#{i} - "
+  playersAliveAndHaventPlayed() {
+    return this.playersAlive().filter(player => player.hasplayed == false);
+  }
 
-  //     if @enemies_in_sight[i].life_points == 0
-  //       puts "#{@enemies_in_sight[i].name} est mort, tu ne peux plus l'attaquer"
-  //     else
-  //       print "#{@enemies_in_sight[i].show_state}"
-  //     end
-  //     i += 1
-  //   end
 
-  //   print "\n"
-  //   print "> "
-  //   gets.chomp
-  // end
+  turnPlay() {
+    while (this.playersAliveAndHaventPlayed().length > 0) {
+      this.playerActionsMenu(this.pickPlayerRandomly(this.playersAliveAndHaventPlayed()));
+    }
+  }
+
+
+
+
 
 }

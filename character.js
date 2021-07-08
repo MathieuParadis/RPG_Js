@@ -1,10 +1,11 @@
 class Character {
-  constructor(name, hp, dmg, mana, status = 'playing') {
+  constructor(name, hp, dmg, mana, status = 'playing', hasplayed = false) {
     this.name = name;
     this.hp = hp;
     this.dmg = dmg;
     this.mana = mana;
     this.status = status;
+    this.hasplayed = hasplayed;
   }
 
   takeDamage (damage) {
@@ -14,9 +15,9 @@ class Character {
 
 
   dealDamage (victim) {
-    victim.takeDamage(this.dmg);
     alert(`${this.name} inflicts ${this.dmg} damage points to ${victim.name}`)
-    
+    victim.takeDamage(this.dmg);
+
     if (this.didItKill(victim) == true) {
       this.mana += 20;
       victim.changeStatusToLoser();

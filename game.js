@@ -8,7 +8,7 @@ class Game {
     this.turnLeft -= 1;
   }
 
-  playersAlive () {
+  playersAlive() {
     return this.players.filter(player => player.status == 'playing' || player.status == 'winner');
   }
 
@@ -18,18 +18,18 @@ class Game {
   }
 
   gameOver() {
-    if (this.turnLeft == 0 || this.playersAlive().length == 1) {
       alert("Game Over");
 
       //Change status of remaining players to winner
       this.playersAlive().map(player => player.changeStatusToWinner());
       this.displayWinners();
     }
-  }
+  
   
   DidSomeoneWin() {
-    if (this.turnLeft  )
-      this.gameOver();
+    if (this.turnLeft == 0 || this.playersAlive().length == 1) {
+      return true;
+    } 
   }
 
   watchStats() {

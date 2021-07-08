@@ -7,10 +7,11 @@ let players = [Grace, Ulder, Moana, Draven, Carl];
 
 const GAME = new Game(players);
 
-while (GAME.turnLeft > 0) {
+while (GAME.turnLeft > 0 && !GAME.DidSomeoneWin()) {
   GAME.newTurn();
   let turn = new Turn(players, GAME.turnLeft);
   turn.startTurn();
+  turn.turnPlay();
 }
 
 GAME.gameOver();

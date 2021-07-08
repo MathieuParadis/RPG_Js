@@ -1,6 +1,6 @@
 class Hunter extends Character {
-  constructor(name, hp, dmg, mana, status) {
-    super(name, hp = 11, dmg = 5, mana = 70, status);
+  constructor(name, hp, dmg, mana, status, hasplayed) {
+    super(name, hp = 11, dmg = 5, mana = 70, status, hasplayed);
   }
 
   hunterFest (victim) {
